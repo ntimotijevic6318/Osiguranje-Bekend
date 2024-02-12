@@ -67,7 +67,7 @@ public class MySqlOsiguranikRepo extends MySqlAbstractRepository implements Osig
             statement = connection.createStatement();
             resultSet = statement.executeQuery("select * from osiguranici");
             while (resultSet.next()) {
-                osiguranici.add(new Osiguranik(resultSet.getInt("id"),  resultSet.getString("imeOsiguranika") , resultSet.getString("prezimeOsiguranika") , resultSet.getDate("datumRodjenjaOsiguranika"), resultSet.getString("brojPasosaOsiguranika") , resultSet.getString("telefonOsiguranika"), resultSet.getString("imejlOsiguranika"), resultSet.getDate("datumPutovanjaOsiguranikaOd") , resultSet.getDate("datumPutovanjaOsiguranikaDo") , resultSet.getString("nacinPutovanjaOsiguranika") ,resultSet.getString("razlikaUDanima")));
+                osiguranici.add(new Osiguranik(resultSet.getInt("id"),  resultSet.getString("imeOsiguranika") , resultSet.getString("prezimeOsiguranika") , resultSet.getDate("datumRodjenjaOsiguranika"), resultSet.getString("brojPasosaOsiguranika") , resultSet.getString("telefonOsiguranika"), resultSet.getString("imejlOsiguranika"), resultSet.getDate("datumPutovanjaOsiguranikaOd") , resultSet.getDate("datumPutovanjaOsiguranikaDo") , resultSet.getString("nacinPutovanjaOsiguranika") ,resultSet.getString("razlikaUDanima") ,resultSet.getDate("datumUnosaPolise")));
             }
 
         } catch (Exception e) {
@@ -91,12 +91,13 @@ public class MySqlOsiguranikRepo extends MySqlAbstractRepository implements Osig
 
             String[] generatedColumns = {"id"};
 
-            preparedStatement = connection.prepareStatement("INSERT INTO pomocniosiguranici  (imePomocnogOsiguranika , prezimePomocnogOsiguranika , datumRodjenjaPomocnogOsiguranika , idNosiocaOsiguranja) VALUES(?, ? , ?, ?)", generatedColumns);
+            preparedStatement = connection.prepareStatement("INSERT INTO pomocniosiguranici  (imePomocnogOsiguranika , prezimePomocnogOsiguranika , datumRodjenjaPomocnogOsiguranika , idNosiocaOsiguranja , brojPasosaPomocnogOsiguranika) VALUES(?, ? , ?, ? , ?)", generatedColumns);
 
             preparedStatement.setString(1, pomocniOsiguranik.getImePomocnogOsiguranika());
             preparedStatement.setString(2, pomocniOsiguranik.getPrezimePomocnogOsiguranika());
             preparedStatement.setDate(3,  pomocniOsiguranik.getDatumRodjenjaPomocnogOsiguranika());
             preparedStatement.setInt(4 , pomocniOsiguranik.getIdNosiocaOsiguranja());
+            preparedStatement.setString(5 , pomocniOsiguranik.getBrojPasosaPomocnogOsiguranika());
 
             preparedStatement.executeUpdate();
 
@@ -143,7 +144,9 @@ public class MySqlOsiguranikRepo extends MySqlAbstractRepository implements Osig
                 Date datumPutovanjaOsiguranikaDo = resultSet.getDate("datumPutovanjaOsiguranikaDo");
                 String nacinPutovanjaOsiguranika = resultSet.getString("nacinPutovanjaOsiguranika");
                 String razlikaUDanima = resultSet.getString("razlikaUDanima");
-                osiguranik = new Osiguranik(idOsiguranika , imeOsiguranika, prezimeOsiguranika , datumRodjenjaOsiguranika , brojPasosaOsiguranika , telefonOsiguranika , imejlOsiguranika , datumPutovanjaOsiguranikaOd , datumPutovanjaOsiguranikaDo , nacinPutovanjaOsiguranika, razlikaUDanima);
+                Date datumuUnosaPolise = resultSet.getDate("datumUnosaPolise");
+
+                osiguranik = new Osiguranik(idOsiguranika , imeOsiguranika, prezimeOsiguranika , datumRodjenjaOsiguranika , brojPasosaOsiguranika , telefonOsiguranika , imejlOsiguranika , datumPutovanjaOsiguranikaOd , datumPutovanjaOsiguranikaDo , nacinPutovanjaOsiguranika, razlikaUDanima, datumuUnosaPolise);
             }
 
             resultSet.close();
@@ -176,7 +179,7 @@ public class MySqlOsiguranikRepo extends MySqlAbstractRepository implements Osig
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                pomocniOsiguranici.add(new PomocniOsiguranik(resultSet.getInt("id"),  resultSet.getString("imePomocnogOsiguranika") , resultSet.getString("prezimePomocnogOsiguranika") , resultSet.getDate("datumRodjenjaPomocnogOsiguranika")));
+                pomocniOsiguranici.add(new PomocniOsiguranik(resultSet.getInt("id"),  resultSet.getString("imePomocnogOsiguranika") , resultSet.getString("prezimePomocnogOsiguranika") , resultSet.getDate("datumRodjenjaPomocnogOsiguranika") , resultSet.getString("brojPasosaPomocnogOsiguranika")));
             }
 
         } catch (Exception e) {

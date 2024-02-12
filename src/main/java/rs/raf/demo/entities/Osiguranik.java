@@ -24,8 +24,7 @@ public class Osiguranik {
     @NotEmpty(message = "Title field is required")
     private String brojPasosaOsiguranika;
 
-    @NotNull(message = "Title field is required")
-    @NotEmpty(message = "Title field is required")
+
     private String telefonOsiguranika;
 
     @NotNull(message = "Title field is required")
@@ -46,10 +45,13 @@ public class Osiguranik {
     @NotEmpty(message = "Title field is required")
     private String razlikaUDanima;
 
+    private Date datumUnosaPolise;
+
     public Osiguranik(){
 
     }
-    public Osiguranik(int id, String imeOsiguranika, String prezimeOsiguranika, Date datumRodjenjaOsiguranika, String brojPasosaOsiguranika, String telefonOsiguranika, String imejlOsiguranika, Date datumPutovanjaOsiguranikaOd, Date datumPutovanjaOsiguranikaDo, String nacinPutovanjaOsiguranika , String razlikaUDanima) {
+
+    public Osiguranik(int id, String imeOsiguranika, String prezimeOsiguranika, Date datumRodjenjaOsiguranika, String brojPasosaOsiguranika, String telefonOsiguranika, String imejlOsiguranika, Date datumPutovanjaOsiguranikaOd, Date datumPutovanjaOsiguranikaDo, String nacinPutovanjaOsiguranika , String razlikaUDanima , Date datumUnosaPolise) {
      this.id= id;
      this.imeOsiguranika = imeOsiguranika;
      this.prezimeOsiguranika = prezimeOsiguranika;
@@ -61,6 +63,7 @@ public class Osiguranik {
      this.datumPutovanjaOsiguranikaDo = datumPutovanjaOsiguranikaDo;
      this.nacinPutovanjaOsiguranika = nacinPutovanjaOsiguranika;
      this.razlikaUDanima = razlikaUDanima;
+     this.datumUnosaPolise = datumUnosaPolise;
     }
 
 
@@ -150,5 +153,13 @@ public class Osiguranik {
 
     public void setRazlikaUDanima(String razlikaUDanima) {
         this.razlikaUDanima = razlikaUDanima;
+    }
+
+    public void setDatumUnosaPolise(Date datumUnosaPolise) {
+        this.datumUnosaPolise = datumUnosaPolise;
+    }
+
+    public Date getDatumUnosaPolise() {
+        return datumUnosaPolise;
     }
 }

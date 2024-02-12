@@ -13,15 +13,18 @@ public class PomocniOsiguranik {
 
     Date datumRodjenjaPomocnogOsiguranika;
 
+    String brojPasosaPomocnogOsiguranika;
+
     public PomocniOsiguranik(){
 
     }
 
-    public PomocniOsiguranik(int id, String imePomocnogOsiguranika, String prezimePomocnogOsiguranika, Date datumRodjenjaPomocnogOsiguranika) {
+    public PomocniOsiguranik(int id, String imePomocnogOsiguranika, String prezimePomocnogOsiguranika, Date datumRodjenjaPomocnogOsiguranika , String brojPasosaPomocnogOsiguranika) {
     this.id = id;
     this.imePomocnogOsiguranika = imePomocnogOsiguranika;
     this.prezimePomocnogOsiguranika = prezimePomocnogOsiguranika;
     this.datumRodjenjaPomocnogOsiguranika = datumRodjenjaPomocnogOsiguranika;
+    this.brojPasosaPomocnogOsiguranika = brojPasosaPomocnogOsiguranika;
     }
 
     public int getId() {
@@ -62,5 +65,13 @@ public class PomocniOsiguranik {
 
     public void setDatumRodjenjaPomocnogOsiguranika(Date datumRodjenjaPomocnogOsiguranika) {
         this.datumRodjenjaPomocnogOsiguranika = datumRodjenjaPomocnogOsiguranika;
+    }
+
+    public String getBrojPasosaPomocnogOsiguranika() {
+        return brojPasosaPomocnogOsiguranika;
+    }
+
+    public void setBrojPasosaPomocnogOsiguranika(String brojPasosaPomocnogOsiguranika) {
+        this.brojPasosaPomocnogOsiguranika = brojPasosaPomocnogOsiguranika;
     }
 }
